@@ -25,5 +25,34 @@ def sum_recursion(arr)
     arr[0] + sum_recursion(arr[1..-1])
 end
 
-p sum_recursion([1,2,3,4])
+# p sum_recursion([1,2,3,4])
 
+def exp_1(base, n)
+   return 1 if n == 0
+#    return base if n == 1
+
+   base * exp_1(base, n-1)
+   
+
+end
+
+# p exp_1(2, 4)
+
+def exp_2(base, n)
+    return 1 if n == 0
+    return base if n == 1
+
+    odd_n = ((n-1)/ 2)
+    odd_n_squared = odd_n * odd_n
+    even_expo = exp_2(base, n/2)
+
+    if n % 2 == 0
+        even_expo * even_expo
+    else
+        base * exp_2(base, odd_n_squared) 
+    end
+
+end
+
+p exp_2(2, 4)
+p exp_2(2, 5)
