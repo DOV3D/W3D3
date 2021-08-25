@@ -1,3 +1,6 @@
+require "byebug"
+
+
 def range(first_num, last_num)
     # if end < start return []
     return [] if last_num < first_num || last_num == first_num
@@ -88,4 +91,34 @@ def fib(n)
     prev_fib + [prev_fib[-1] + prev_fib[-2]]
 end
 
-p fib(6)
+# p fib(6)
+
+def bsearch(array, target) #[5, 9]
+   
+    mid = array.length / 2 #mid: 1
+    return mid if target == array[mid] #target:5 array[2]: 4
+    return nil if array.empty? #
+  
+    left_array = array[0...mid] #[1,3]
+    right_array = array[mid+1..-1] #[5, 9]
+   
+    
+     #target:5  array[2]: 4 
+
+    if target < array[mid] #1 < 2
+        bsearch(left_array, target) #[1, 2] target:1
+    else
+        bsearch(right_array, target)
+    end
+
+
+end
+
+# p bsearch([1, 2, 3], 1) # => 0
+# p bsearch([2, 3, 4, 5], 3) # => 1
+# p bsearch([2, 4, 6, 8, 10], 6) # => 2
+p bsearch([1, 3, 4, 5, 9], 5) # => 3
+p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+
