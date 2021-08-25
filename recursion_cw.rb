@@ -93,22 +93,27 @@ end
 
 # p fib(6)
 
-def bsearch(array, target) #[5, 9]
-   
+def bsearch(array, target) #[5]
+    
     mid = array.length / 2 #mid: 1
-    return mid if target == array[mid] #target:5 array[2]: 4
-    return nil if array.empty? #
+    return mid if target == array[mid] #target:5 array[1]: 9
+    return nil if array.length < 1 #
   
-    left_array = array[0...mid] #[1,3]
-    right_array = array[mid+1..-1] #[5, 9]
+    left_array = array[0...mid] #[5]
+    right_array = array[mid + 1..-1] #[nil]
    
     
-     #target:5  array[2]: 4 
+     #target:5  array[1]: 9 
 
-    if target < array[mid] #1 < 2
-        bsearch(left_array, target) #[1, 2] target:1
+    if target > array[mid] #1 < 2
+       i = bsearch(right_array, target)
+       if i != nil
+        i + mid + 1
+       else
+        nil
+       end
     else
-        bsearch(right_array, target)
+        bsearch(left_array, target) #[1, 2] target:1
     end
 
 
@@ -117,8 +122,14 @@ end
 # p bsearch([1, 2, 3], 1) # => 0
 # p bsearch([2, 3, 4, 5], 3) # => 1
 # p bsearch([2, 4, 6, 8, 10], 6) # => 2
-p bsearch([1, 3, 4, 5, 9], 5) # => 3
-p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+# p bsearch([1, 3, 4, 5, 9], 5) # => 3
+# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
 # p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
+def merge_sort
+ if array.length == 0
+    
+
+
+end
