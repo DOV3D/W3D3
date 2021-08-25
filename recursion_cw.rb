@@ -127,16 +127,17 @@ end
 # p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
-def merge_sort(arr)
+def merge_sort(arr) #[3,1]
     return nil if arr.length == 0
-    arr if arr.length == 1
+    return arr if arr.length == 1
+    return merge([arr[0]], [arr[1]]) if arr.length == 2
+
+    mid = arr.length/2 #mid: 1
+    left_array = arr[0...mid] #[3]
+    right_array = arr[mid..-1] #[1]
     
-    mid = arr.length/2
-    left_array = arr[0...mid]
-    right_array = arr[mid..-1]
     
-    merge_sort()
-    merge_sort(merge(left_array,right_array))
+     merge_sort(left_array) + merge_sort(right_array)
 
     
 end
@@ -151,4 +152,5 @@ end
 
 # p merge([1],[2])
 # p merge([2],[1])
-p merge_sort([3,1,7,5,6,4])
+p merge_sort([3,1,7,5,9])
+p merge_sort([2,7,4,1,6])
