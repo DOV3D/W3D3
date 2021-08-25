@@ -54,5 +54,38 @@ def exp_2(base, n)
 
 end
 
-p exp_2(2, 4)
-p exp_2(2, 5)
+# p exp_2(2, 4)
+# p exp_2(2, 5)
+
+def deep_dup(arr)
+    arr.map do |ele|
+        if ele.is_a?(Array)
+            deep_dup(ele)
+        else
+            ele
+        end
+    end
+end
+
+# a = [[1,2,3],3,4,[[5,6]]]
+# b = deep_dup(a)
+# p b
+# p b[0] << 7
+# p b
+# p a
+
+def fib(n)
+    return [] if n <= 0
+    return [1] if n == 1
+    return [1,1] if n == 2
+
+    #fib(3) = [1,1,2] = fib(2) + [2]
+    #fib(4) = [1,1,2,3] = fib(3) + [3]
+    #fib(5) = [1,1,2,3,5] = fib(4) + [5]
+    #fib(6) = [1,1,2,3,5,8] = fib(5) + [8]
+    # fib(6) = [1,1,2,3,5,8] = fib(5) + [fib(5)[-1] + fib(5)[-2]]
+    prev_fib = fib(n-1) 
+    prev_fib + [prev_fib[-1] + prev_fib[-2]]
+end
+
+p fib(6)
